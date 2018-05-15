@@ -3,48 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
+    <title> Adaptative website.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="div_ex">
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <div class="container fixed-top">
+                <a href="index.html" class="navbar-brand logo">
+                    <img src="img/logo.png" alt="logo">
+                </a>
+                <button class="navbar-toggler menu_btn" data-toggle="collapse" data-target="#top_menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse justify-content-end" id="top_menu">
+                    <ul class="navbar-nav menu">
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                    </ul>
+                </div>
+                <div class="top_line"></div>
+            </div>
+        </nav>
 
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-2 col-12 col-sm-6 col-md-4 mb30">
-                <img class="img-fluid" src="img/1.png" alt="img 1">
-            </div>
-            <div class="col-xl-2 col-md-4 col-sm-6 col-12 mb30">
-                <img class="img-fluid" src="img/2.png" alt="img 2">
-            </div>
-            <div class="col-xl-2 col-md-4 col-sm-6 col-12 mb30">
-                <img class="img-fluid" src="img/3.png" alt="img 3">
-            </div>
-            <div class="col-xl-2 col-md-4 col-sm-6 col-12 mb30">
-                <img class="img-fluid" src="img/4.png" alt="img 4">
-            </div>
-            <div class="col-xl-2 col-md-4 col-sm-6 col-12 mb30">
-                <img class="img-fluid" src="img/5.png" alt="img 5">
-            </div>
-            <div class="col-xl-2 col-md-4 col-sm-6 col-12 mb30">
-                <img class="img-fluid" src="img/6.png" alt="img 6">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="title_block">
+                        <h1>Title of text</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt laboriosam asperiores rerum harum qui repellendus.</p>
+                        <button class="my_btn btn_md">find out more</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-6 col-lg-4">col-md-1</div>
-            <div class="col-xs-12 col-md-6 col-lg-4">col-md-1</div>
-            <div class="offset-md-6 col-md-6">col-md-1</div>
-        </div>
-    </div>
+    </header>
+
+    <script src="libs/jquery/jquery-2.1.4.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
 </body>
 
 </html>
