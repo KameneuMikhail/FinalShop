@@ -75,11 +75,110 @@ nav {
 }
 
 .title_block p {
-    font-size: 10px;
+    font-size: 20px;
     margin-bottom: 50px;
 }
 
 #top_menu {
     background-color: #2a2e48;
     padding: 20px;
+}
+
+.params_s {
+    padding: 90px 0;
+}
+
+.param_block {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.param_block i {
+    font-size: 70px;
+    color: #e84545;
+}
+
+.param_block h3 {
+    text-transform: uppercase;
+    font-family: "RalewayBold", sans-serif;
+    font-size: 17px;
+}
+
+.param_block p {
+    font-size: 14px;
+}
+
+.p0 {
+    padding: 0;
+}
+
+.work_block {
+    position: relative;
+}
+
+.image_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(232, 69, 69, .6);
+    display: flex;
+    opacity: 0;
+}
+
+.work_block:hover .image_wrap {
+    opacity: 1;
+}
+
+.work_descr {
+    color: #fff;
+    text-align: center;
+    margin: auto;
+}
+
+.team_s {
+    padding: 95px 0;
+    color: #6c7279;
+}
+
+.soc_btn {
+    border: 1px solid #c6cacc;
+    color: #c6cacc;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+}
+
+
+/*FOOTER*/
+
+.main_footer {
+    padding: 70px 0;
+    background-color: #3a3e64;
+}
+
+.footer_item {
+    text-align: center;
+}
+
+.footer_item h5 {
+    font-family: "RalewayBold", sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.footer_item p {
+    font-size: 14px;
+    color: #9d9fb2;
+}
+
+.copyright_block {
+    background-color: #313454;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.copy_txt {
+    color: #9d9fb2;
 }

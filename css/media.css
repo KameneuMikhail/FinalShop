@@ -8,12 +8,16 @@
 
 /* Medium Devices, Desktops */
 
-@media only screen and (max-width: 992px) {}
+@media only screen and (max-width: 992px) {
+    .team_item {
+        margin-bottom: 30px;
+    }
+}
 
 
 /* Small Devices, Tablets */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     /*Disable Animation on Mobile Devices*/
     .animated {
         /*CSS transitions*/
@@ -52,6 +56,10 @@
         width: 40px;
         border-radius: 50%;
         background-color: #e84545;
+        color: #fff;
+    }
+    .menu_btn span {
+        top: -15px;
     }
     #top_menu {
         background-color: #2a2e48;
@@ -70,13 +78,22 @@
     }
     .title_block {
         margin-top: 130px;
+    }
+    .team_item {
+        margin-bottom: 30px;
+    }
+    .hidden {
+        visibility: hidden;
+    }
+    .footer_item {
+        margin-bottom: 50px;
     }
 }
 
 
 /* Extra Small Devices, Phones */
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 479px) {
     nav {
         height: 60px;
         line-height: 60px;
@@ -94,6 +111,10 @@
         width: 40px;
         border-radius: 50%;
         background-color: #e84545;
+        color: #fff;
+    }
+    .menu_btn span {
+        top: -15px;
     }
     #top_menu {
         background-color: #2a2e48;
@@ -112,13 +133,28 @@
     }
     .title_block {
         margin-top: 130px;
+    }
+    .title_block h1 {
+        font-size: 30px;
+    }
+    .title_block p {
+        font-size: 14px;
+    }
+    .team_item {
+        margin-bottom: 30px;
+    }
+    .hidden {
+        visibility: hidden;
+    }
+    .footer_item {
+        margin-bottom: 50px;
     }
 }
 
 
 /* Custom, iPhone Retina */
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 319px) {
     nav {
         height: 60px;
         line-height: 60px;
@@ -136,6 +172,10 @@
         width: 40px;
         border-radius: 50%;
         background-color: #e84545;
+        color: #fff;
+    }
+    .menu_btn span {
+        top: -15px;
     }
     #top_menu {
         background-color: #2a2e48;
@@ -154,6 +194,21 @@
     }
     .title_block {
         margin-top: 130px;
+    }
+    .title_block h1 {
+        font-size: 30px;
+    }
+    .title_block p {
+        font-size: 14px;
+    }
+    .team_item {
+        margin-bottom: 30px;
+    }
+    .hidden {
+        visibility: hidden;
+    }
+    .footer_item {
+        margin-bottom: 50px;
     }
 }
 
