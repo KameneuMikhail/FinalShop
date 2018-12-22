@@ -1,338 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="App">
 
 <head>
     <meta charset="UTF-8">
-    <title> Adaptative website.</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="css/fonts.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="Libraries/angular.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script>
+        angular.module("App", []).constant("constants", {
+            baseUrl: "http://www.nbrb.by/API/ExRates/Currencies/"
+        });
+    </script>
+    <script>
+        angular.module("App").provider("$currencies", function() {
+            return {
+                $get: function($http, constants) {
+                    return {
+                        getAll: function() {
+                            var promise = $http({
+                                method: "GET",
+                                url: constants.baseUrl
+                            });
+
+                            return promise;
+                        },
+                        getById: function(id) {
+                            var promise = $http({
+                                method: "GET",
+                                url: constants.baseUrl + id
+                            });
+
+                            return promise;
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        angular.module("App").controller("Ctrl", function($scope, $currencies) {
+            $scope.currencies = [];
+            $scope.getCurrencies = function() {
+                $currencies.getAll().then(function(response) {
+                    $scope.currencies = response.data;
+                });
+            }
+        });
+    </script>
+    <script>
+        angular.module("App").directive("listView", function() {
+            return {
+
+                template: "<ol><li ng-repeat='item in items'>{{item.Cur_QuotName}}</li></ol>",
+                scope: {
+                    items: '=source'
+                }
+            }
+        });
+    </script>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-light">
-            <div class="container fixed-top">
-                <a href="index.html" class="navbar-brand logo">
-                    <img src="img/logo.png" alt="logo">
-                </a>
-                <button class="navbar-toggler menu_btn" type="button" data-toggle="collapse" data-target="#top_menu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                <div class="collapse navbar-collapse justify-content-end" id="top_menu">
-                    <ul class="navbar-nav menu">
-                        <li><a href="#">link</a></li>
-                        <li><a href="#">link</a></li>
-                        <li><a href="#">link</a></li>
-                        <li><a href="#">link</a></li>
-                        <li><a href="#">link</a></li>
-                    </ul>
-                </div>
-                <div class="top_line"></div>
-            </div>
-        </nav>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <div class="title_block">
-                        <h1>Title of text</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt laboriosam asperiores rerum harum qui repellendus.</p>
-                        <button class="my_btn btn_md" data-toggle="modal" data-target="#exampleModalCenter">find out more</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section class="params_s">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="param_block">
-                        <i class="fas fa-desktop"></i>
-                        <h3>Easily castomised</h3>
-                        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore nulla ratione id suscipit, eligendi commodi sint quam esse quas deleniti architecto voluptates, reprehenderit tenetur numquam at repellendus nemo culpa. Sit.</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="param_block">
-                        <i class="fas fa-desktop"></i>
-                        <h3>Easily castomised</h3>
-                        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore nulla ratione id suscipit, eligendi commodi sint quam esse quas deleniti architecto voluptates, reprehenderit tenetur numquam at repellendus nemo culpa. Sit.</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="param_block">
-                        <i class="fas fa-desktop"></i>
-                        <h3>Easily castomised</h3>
-                        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore nulla ratione id suscipit, eligendi commodi sint quam esse quas deleniti architecto voluptates, reprehenderit tenetur numquam at repellendus nemo culpa. Sit.</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="param_block">
-                        <i class="fas fa-desktop"></i>
-                        <h3>Easily castomised</h3>
-                        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore nulla ratione id suscipit, eligendi commodi sint quam esse quas deleniti architecto voluptates, reprehenderit tenetur numquam at repellendus nemo culpa. Sit.</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="param_block">
-                        <i class="fas fa-desktop"></i>
-                        <h3>Easily castomised</h3>
-                        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore nulla ratione id suscipit, eligendi commodi sint quam esse quas deleniti architecto voluptates, reprehenderit tenetur numquam at repellendus nemo culpa. Sit.</div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="param_block">
-                        <i class="fas fa-desktop"></i>
-                        <h3>Easily castomised</h3>
-                        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore nulla ratione id suscipit, eligendi commodi sint quam esse quas deleniti architecto voluptates, reprehenderit tenetur numquam at repellendus nemo culpa. Sit.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="works_s">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 p0">
-                    <div class="work_block">
-                        <div class="image_wrap">
-                            <div class="work_descr">
-                                <h4>PROJECT NAME</h4>
-                                <p>Some description</p>
-                            </div>
-                        </div>
-                        <img src="img/work-1.jpg" class="img-fluid" alt="work-1">
-                    </div>
-                </div>
-                <div class="col-md-3 p0">
-                    <div class="work_block">
-                        <div class="image_wrap">
-                            <div class="work_descr">
-                                <h4>PROJECT NAME</h4>
-                                <p>Some description</p>
-                            </div>
-                        </div>
-                        <img src="img/work-2.jpg" class="img-fluid" alt="work-1">
-                    </div>
-                </div>
-                <div class="col-md-3 p0">
-                    <div class="work_block">
-                        <div class="image_wrap">
-                            <div class="work_descr">
-                                <h4>PROJECT NAME</h4>
-                                <p>Some description</p>
-                            </div>
-                        </div>
-                        <img src="img/work-3.jpg" class="img-fluid" alt="work-1">
-                    </div>
-                </div>
-                <div class="col-md-3 p0">
-                    <div class="work_block">
-                        <div class="image_wrap">
-                            <div class="work_descr">
-                                <h4>PROJECT NAME</h4>
-                                <p>Some description</p>
-                            </div>
-                        </div>
-                        <img src="img/work-4.jpg" class="img-fluid" alt="work-1">
-                    </div>
-                </div>
-                <div class="col-md-3 p0">
-                    <div class="work_block">
-                        <div class="image_wrap">
-                            <div class="work_descr">
-                                <h4>PROJECT NAME</h4>
-                                <p>Some description</p>
-                            </div>
-                        </div>
-                        <img src="img/work-5.jpg" class="img-fluid" alt="work-1">
-                    </div>
-                </div>
-                <div class="col-md-3 p0">
-                    <div class="work_block">
-                        <div class="image_wrap">
-                            <div class="work_descr">
-                                <h4>PROJECT NAME</h4>
-                                <p>Some description</p>
-                            </div>
-                        </div>
-                        <img src="img/work-6.jpg" class="img-fluid" alt="work-1">
-                    </div>
-                </div>
-                <div class="col-md-3 p0">
-                    <div class="work_block">
-                        <div class="image_wrap">
-                            <div class="work_descr">
-                                <h4>PROJECT NAME</h4>
-                                <p>Some description</p>
-                            </div>
-                        </div>
-                        <img src="img/work-7.jpg" class="img-fluid" alt="work-1">
-                    </div>
-                </div>
-                <div class="col-md-3 p0">
-                    <div class="work_block">
-                        <div class="image_wrap">
-                            <div class="work_descr">
-                                <h4>PROJECT NAME</h4>
-                                <p>Some description</p>
-                            </div>
-                        </div>
-                        <img src="img/work-8.jpg" class="img-fluid" alt="work-1">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="team_s">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <img src="img/team-1.jpg" class="img-fluid" alt="team">
-                    <div class="team_desc">
-                        <h2>
-                            Software Engineer
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eligendi quidem quisquam iste aperiam dignissimos nobis ut consectetur tempora expedita at suscipit magni, ad, sit error rem molestiae quam similique.</p>
-                    </div>
-                    <button class="soc_btn">
-                            <i class="fab fa-facebook"></i>
-                        </button>
-                    <button class="soc_btn">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-                    <button class="soc_btn">
-                            <i class="fab fa-linkedin"></i>
-                        </button>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <img src="img/team-2.jpg" class="img-fluid" alt="team">
-                    <div class="team_desc">
-                        <h2>
-                            Software Engineer
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eligendi quidem quisquam iste aperiam dignissimos nobis ut consectetur tempora expedita at suscipit magni, ad, sit error rem molestiae quam similique.</p>
-                    </div>
-                    <button class="soc_btn">
-                                <i class="fab fa-facebook"></i>
-                            </button>
-                    <button class="soc_btn">
-                                <i class="fab fa-twitter"></i>
-                            </button>
-                    <button class="soc_btn">
-                                <i class="fab fa-linkedin"></i>
-                            </button>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <img src="img/team-3.jpg" class="img-fluid" alt="team">
-                    <div class="team_desc">
-                        <h2>
-                            Software Engineer
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eligendi quidem quisquam iste aperiam dignissimos nobis ut consectetur tempora expedita at suscipit magni, ad, sit error rem molestiae quam similique.</p>
-                    </div>
-                    <button class="soc_btn">
-                                    <i class="fab fa-facebook"></i>
-                                </button>
-                    <button class="soc_btn">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-                    <button class="soc_btn">
-                                    <i class="fab fa-linkedin"></i>
-                                </button>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <img src="img/team-4.jpg" class="img-fluid" alt="team">
-                    <div class="team_desc">
-                        <h2>
-                            Software Engineer
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui eligendi quidem quisquam iste aperiam dignissimos nobis ut consectetur tempora expedita at suscipit magni, ad, sit error rem molestiae quam similique.</p>
-                    </div>
-                    <button class="soc_btn">
-                                        <i class="fab fa-facebook"></i>
-                                    </button>
-                    <button class="soc_btn">
-                                        <i class="fab fa-twitter"></i>
-                                    </button>
-                    <button class="soc_btn">
-                                        <i class="fab fa-linkedin"></i>
-                                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="main_footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="footer_item">
-                            <h5>Location</h5>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, soluta.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="footer_item">
-                            <div class="footer_item">
-                                <button class="soc_btn">
-                                        <i class="fab fa-facebook"></i>
-                                    </button>
-                                <button class="soc_btn">
-                                        <i class="fab fa-twitter"></i>
-                                    </button>
-                                <button class="soc_btn">
-                                        <i class="fab fa-linkedin"></i>
-                                    </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 hidden">
-                        <div class="footer_item">
-                            <h5>Location</h5>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, soluta.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </footer>
-    <script src="libs/jquery/jquery-2.1.4.min.js"></script>
-    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/common.js"></script>
-</body>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+    <div class="container" ng-controller='Ctrl'>
+        <button type="button" class="btn btn-primary" ng-click='getCurrencies()'>Get Currencies</button>
+        <div list-view source='currencies'></div>
     </div>
-</div>
+</body>
 
 </html>
